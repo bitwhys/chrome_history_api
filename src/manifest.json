@@ -1,0 +1,32 @@
+{
+  "name": "Chrome History API",
+  "version": "0.0.1",
+  "description": "Exploring the chrome.history API",
+  "homepage_url": "https://github.com/bitwhys/chrome_history_api",
+  "manifest_version": 3,
+  "minimum_chrome_version": "100",
+  "icons": {
+    "128": "icon.png"
+  },
+  "permissions": ["storage", "history"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/fregante/browser-extension-template/*"],
+      "js": ["scripts/content.ts"],
+      "css": ["scripts/content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "pages/popup/popup.html"
+  },
+  "options_ui": {
+    "browser_style": true,
+    "page": "pages/options/options.html"
+  },
+  "background": {
+    "service_worker": "pages/background/background-worker.ts",
+    "type": "module"
+  }
+}
